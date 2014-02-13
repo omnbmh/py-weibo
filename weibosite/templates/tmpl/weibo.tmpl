@@ -1,0 +1,21 @@
+{% verbatim %}
+<script id='weibo' type='text/x-jsrender'>
+{{for data.info}}
+<li id='{{:id}}' class="media weibo">
+	<a class="pull-left" href="#">
+		<img class="media-object" src="{{:head}}/50" alt="{{:nick}}">
+	</a>
+	<div class="media-body">
+		<h4 class="media-heading">{{:nick}} ({{:timestamp}})</h4>
+		<div>{{:text}}</div>
+		<div>
+			<img class="media-object" src="{{:bmiddle_pic}}" >
+		</div>
+		<div status-id = '{{:id}}'>
+			<a action-type = 'post'>发送</a>
+		</div>
+	</div>
+ </li>
+{{/for}}
+</script>
+{% endverbatim %}
