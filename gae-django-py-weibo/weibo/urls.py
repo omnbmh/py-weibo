@@ -1,7 +1,7 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
-from weibosite.view import hello, home, signin, signout, ctime, send
-from weibosite.api import auth_login, auth_callback, weibo_public, weibo_post
+from weibo.view import hello, home, signin, signout, ctime, send
+from weibo.api import auth_login, auth_callback, weibo_public, weibo_post
 
 admin.autodiscover()
 

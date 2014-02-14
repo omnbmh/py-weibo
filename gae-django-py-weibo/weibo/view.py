@@ -1,6 +1,6 @@
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django import template
-import datetime, mysql.connector
+import datetime
 from django.template.loader import get_template
 
 def error(request):

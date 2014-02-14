@@ -1,5 +1,5 @@
 """
-Django settings for weibosite project.
+Django settings for weibo project.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/1.6/topics/settings/
@@ -10,6 +10,7 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+import MySQLdb
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
@@ -17,7 +18,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '8hp%u57lkx&mo@m_tr#j=%ge_b!zvd5dryg7rjp%net1gach1+'
+SECRET_KEY = 'k_*2+hvn#cxf70%2+y(qjf)swkeh#k=*d&*_18x9pqj$x)mx&$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -40,6 +41,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'weibo',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -49,11 +51,12 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'google.appengine.ext.ndb.django_middleware.NdbDjangoMiddleware',
 )
 
-ROOT_URLCONF = 'weibosite.urls'
+ROOT_URLCONF = 'weibo.urls'
 
-WSGI_APPLICATION = 'weibosite.wsgi.application'
+WSGI_APPLICATION = 'weibo.wsgi.application'
 
 
 # Database
@@ -61,8 +64,15 @@ WSGI_APPLICATION = 'weibosite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        #'ENGINE': 'django.db.backends.sqlite3',
+        #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+
+        'ENGINE': 'django.db.backends.mysql',
+        'HOST': '192.168.8.240',
+        'PORT': '3307',
+        'NAME': 'test',
+        'USER': 'root',
+        'PASSWORD': '123456',
     }
 }
 
@@ -83,6 +93,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'resources') #'static'
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
