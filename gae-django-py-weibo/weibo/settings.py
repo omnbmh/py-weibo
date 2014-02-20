@@ -38,20 +38,20 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
-    'django.contrib.sessions',
+    #'django.contrib.sessions', #session
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'weibo',
 )
 
 MIDDLEWARE_CLASSES = (
-    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware', #session
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'google.appengine.ext.ndb.django_middleware.NdbDjangoMiddleware',
+    #'google.appengine.ext.ndb.django_middleware.NdbDjangoMiddleware',
 )
 
 ROOT_URLCONF = 'weibo.urls'
@@ -99,3 +99,25 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'resources'),
 )
+
+# cache framework
+# https://docs.djangoproject.com/en/1.6/topics/cache/#filesystem-caching
+"""
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+        'LOCATION': os.path.join(BASE_DIR, 'django_cache'),
+        'TIMEOUT': 60,
+        'OPTIONS': {
+            'MAX_ENTRIES': 1000
+        },
+    }
+}
+"""
+
+#
+#
+SESSION_ENGINE = 'django.contrib.sessions.backends.signed_cookies'
+#SESSION_FILE_PATH = os.path.join(BASE_DIR, 'session_files')
+SESSION_COOKIE_HTTPONLY = 'True'
+

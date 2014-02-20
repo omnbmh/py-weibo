@@ -16,6 +16,7 @@ __version__ = '1.0'
 APP_KEY = '100628862'
 APP_SECRET = '021e18ea097817f15a819a45c0e5c592'
 REDIRECT_URL = 'http://127.0.0.1:8000/api/auth/callback'
+#REDIRECT_URL = 'http://gae-django-py-weibo.appspot.com/api/auth/callback'
 
 '''
 授权后设置授权信息
