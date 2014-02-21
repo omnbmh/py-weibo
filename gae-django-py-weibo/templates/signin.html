@@ -1,23 +1,45 @@
 {% load staticfiles %}
 <html>
 	<head>
-		<title>Signin</title>
-		<link rel="stylesheet" href="{% static 'css/lib/bootstrap.css' %}">
+		<meta charset="utf-8">
+		<title>Weibo</title>
+        <meta name="format-detection" content="telephone=no" />
+        <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
 		<link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon"/>
+        <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" />
 	</head>
 	<body>
-		<div class="page-header">
-			<!--<h1>我的微博<small>my weibo</small></h1>-->
+        <header><h1></h1><h2></h2></header>
+        <div class="main">
+			<header>
+				<div class="clear"></div>
+				<div class="container_12">
+					<div class="grid_12">
+						<h1>
+							<a href="index.html">
+								<img src="{% static 'png/logo.png' %}" alt="Your Happy Family">
+							</a>
+						</h1>
+					</div>
+				</div>
+			</header>
 		</div>
-        <div class='container'>
-            <div class="jumbotron" style='text-align: center;'>
-              <h1>享受简单</h1>
-              <p><!-- 他的微博 你的微博 我的微博，都是我的微博！ --></p>
-              <p><a href='api/auth/login' class="btn btn-primary btn-lg" role="button">腾讯微博登陆</a></p>
-            </div>
-        </div>
-		<script type="text/javascript" src="{% static 'js/lib/jquery-1.9.1.js' %}" ></script>
-		<script type="text/javascript" src="{% static 'js/lib/jsviews.js' %}" ></script>
-		<script type="text/javascript" src="{% static 'js/lib/bootstrap.js' %}" ></script>
+        <div class="menu_block">
+			<div class="container_12">
+				<div class="grid_12">
+					<nav class="horizontal-nav full-width horizontalNav-notprocessed">
+						<ul class="sf-menu">
+                            <li><a class="navbar-brand" href="#">我的微博</a></li>
+                            <li><a class="navbar-brand" href="#">享受简单</a></li>
+							<li><a class="navbar-brand" href='api/auth/login'>腾讯微博登陆</a></li>
+						</div>
+						</ul>
+					</nav>
+					<div class="clear"></div>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
 	</body>
 </html>

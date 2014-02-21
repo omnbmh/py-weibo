@@ -17,8 +17,22 @@
 		//loadTmpl();
 		$.getJSON('api/weibo/public',function(data){
 			var tmpl = $.templates('#weibo');
-			var html = tmpl.render(data);
-			$('#weibo-boxes').append(html);
+            var $leftBox = $('<div class="grid_6"></div>');
+            var $rightBox = $('<div class="grid_6"></div>');
+            $('#weibo-boxes').prepend($rightBox);
+			$('#weibo-boxes').prepend($leftBox);
+            // load data 
+            for (var i = 0, j = data.data.info.length; i<j;i++){
+                var weibo = data.data.info[i];
+                var $html = $(tmpl.render(weibo));
+                if (i%2 == 0){
+                    $html.addClass('left');
+                    $leftBox.append($html);
+                }else{
+                    $html.addClass('right');
+                    $rightBox.append($html);
+                }
+            }
 		});
 	};
 	
