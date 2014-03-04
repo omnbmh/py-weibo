@@ -1,20 +1,19 @@
 {% verbatim %}
-<script id='weibo' type='text/x-jsrender'>
-    {{if image}}
-    <div class="p1_box cl1">
-		<div class="type"></div>
-        {{for image}}
-		<img src="{{:#data}}/240" alt="{{:nick}}">
-        {{/for}}
-        <blockquote>{{:text}}</blockquote>
-		<a href="index-2.html" class="bot">{{:nick}}<span>7 <br>images</span></a>
-	</div>
-    {{else}}
-    <div class="p1_box cl5">
-		<div class="type"></div>
-		<blockquote>{{:text}}</blockquote>
-		<a href="#" class="bot">{{:nick}}<span>8 <br>comments</span></a>
-	</div>
-    {{/if}}
-</script>
+<script id='weibo' type='text/x-jsrender'><li><article>
+    <div class="heading"><h2 class="title"><a href="#">Lorem ipsum dolor sit amet</a></h2></div>
+    {{for image}}
+    <img alt='{{:nick}}' e-type='img' e-data='{{:#data}}/2000' src='{{:#data}}/240'>
+    {{/for}}
+    <div class="content">
+        <p e-type='text'>{{:text}}</p>
+    </div>
+    <div class="extra">
+        <div class="info">By Admin on December 01, 2012 - <a href="#">01 Commnets</a></div>
+        <div class="more"><a class="button" href="#">{{:nick}}</a></div>
+        <div class="inner maxheight">
+            <a href="#" class="btn" action-type='post'>发送</a>
+        </div>
+        <div class="clear"></div>
+        </div>
+    </article></li></script>
 {% endverbatim %}

@@ -40,9 +40,11 @@
 	
 	
 	$(document).on('click', "a[action-type='post']", function() {
-		var $this = $(this);
-		var id = $this.parent('div').attr('status-id');
-		$.getJSON('api/weibo/post', {id : id},function(data){
+		var $this = $(this).closest('div.p1_box');
+        var text = $("blockquote[e-type='text']",$this).text();
+        var img_url = $("img[e-type='img']",$this).attr('e-data');
+        console.info(text+img_url);
+		$.getJSON('api/weibo/post', {text: text, url: img_url },function(data){
 			alert(data);
 		});
 	});

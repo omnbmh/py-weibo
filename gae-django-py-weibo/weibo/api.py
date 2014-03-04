@@ -15,8 +15,8 @@ __version__ = '1.0'
 # weibo app config
 APP_KEY = '100628862'
 APP_SECRET = '021e18ea097817f15a819a45c0e5c592'
-#REDIRECT_URL = 'http://127.0.0.1:8000/api/auth/callback'
-REDIRECT_URL = 'http://gae-django-py-weibo.appspot.com/api/auth/callback'
+REDIRECT_URL = 'http://127.0.0.1:8000/api/auth/callback'
+#REDIRECT_URL = 'http://gae-django-py-weibo.appspot.com/api/auth/callback'
 
 '''
 授权后设置授权信息
@@ -35,7 +35,7 @@ def auth_login(req):
     oauth2 = OAuth2Handler()
     oauth2.set_app_key_secret(app_key=APP_KEY, app_secret=APP_SECRET, redirect_uri=REDIRECT_URL)
     return HttpResponseRedirect(oauth2.get_authorize_url())
-	
+    
 def auth_callback(req):
     code = req.GET.get('code')
     openkey = req.GET.get('openkey')
@@ -61,11 +61,11 @@ def auth_callback(req):
    
     # write to session
     req.session['user'] = {'nick':nick, 'name':name, 'openid':openid}
-	
-	#return HttpResponse(access_token)
+    
+    #return HttpResponse(access_token)
     #return HttpResponse(json.dumps(token), mimetype='text/json; charset=utf-8')
     return HttpResponseRedirect('/')
-	
+    
 
 def weibo_public(req):
     oauth2 = OAuth2Handler()
@@ -74,13 +74,20 @@ def weibo_public(req):
     oauth2.set_openid(OPENID)
     api = API(oauth2)
     
-    return HttpResponse(json.dumps(api.get.statuses__home_timeline(format = 'json', pageflag = 0, pagetime = 0, reqnum = 50, type = 1, contenttype = 0)), mimetype='text/json; charset=utf-8')
-	
+    #return HttpResponse(json.dumps(api.get.statuses__home_timeline(format = 'json', pageflag = 0, pagetime = 0, reqnum = 50, type = 1, contenttype = 0)), mimetype='text/json; charset=utf-8')
+    return HttpResponse(json.dumps(api.get.statuses__user_timeline(format = 'json', pageflag = 0, pagetime = 0, reqnum = 70, lastid=0, name='ithome', type = 1, contenttype = 0)), mimetype='text/json; charset=utf-8')
+    
 def weibo_post(req):
-    id = req.GET.get('id')
-    status = client.get.statuses__show(id = id)
-    client.post.statuses__update(status = status.text)
-    return HttpResponse(id)
-	
-	
-	
+    text = req.GET.get('text')
+    url = req.GET.get('url')
+    
+    oauth2 = OAuth2Handler()
+    oauth2.set_app_key_secret(APP_KEY, APP_SECRET, REDIRECT_URL)
+    oauth2.set_access_token(ACCESS_TOKEN)
+    oauth2.set_openid(OPENID)
+    api = API(oauth2)
+    if url:
+        api.post.t__add_pic_url(content = text, pic_url=url)
+    else:
+        api.post.t__add(content = text)
+    return HttpResponse(text)
