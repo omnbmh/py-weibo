@@ -1,14 +1,16 @@
 py-weibo
 ========
+这是一个django项目
 
-hello world, weibo. 
-GAE
-Python27
-Django 1.5
-MySQLdb 1.2.4b4
-
-debug:
-GAE
-Python27
-Django 1.6.2
-MySQLdb 1.2.3
+gae 部署目录
+---------------
+--resources
+--session_files
+--templates
+--weibo
+--app.yaml
+--favicon.ico
+--index.yaml
+--main.py
+--manage.py
+--README.md

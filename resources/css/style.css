@@ -1,4 +1,13 @@
+/* author dezhi */
 
+/* struct */
+div.container {width:960px; margin: 0 auto; min-height:560px;}
+
+div.container ul {
+    list-style: none;
+}
+
+div.container ul li { float:right; padding: 0px; }
 
 * {
     margin: 0;
@@ -18,7 +27,7 @@ body {
     font-size: 12pt;
     line-height: 1.75em;
     font-family: Georgia, serif;
-    background: #ad8667 url('../images/bg.jpg');
+    background: #ad8667 url('../images/bg.png');
     color: #ebe1d9;
 }
 
@@ -60,10 +69,6 @@ ul {
 
 .imageList li {
     clear: both;
-}
-
-#bg {
-    background: url('../images/shadow.png') top left repeat-x;
 }
 
 #banner {
@@ -160,7 +165,7 @@ ul {
 
 #logo a {
     text-decoration: none;
-    color: #fff;
+    color: #e9cf84;
 }
 
 #logo h1 {
@@ -283,3 +288,7 @@ ul {
     padding-top: 0;
     border-top: 0;
 }
+
+a.login { display:block; width:112px; height:53px; }
+a.tencent { background: url('../images/tencent_login.png'); }
+a.tencent:hover { background: url('../images/tencent_login_hover.png') no-repeat center; }

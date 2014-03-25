@@ -61,22 +61,29 @@ def auth_callback(req):
    
     # write to session
     req.session['user'] = {'nick':nick, 'name':name, 'openid':openid}
-    
-    #return HttpResponse(access_token)
     #return HttpResponse(json.dumps(token), mimetype='text/json; charset=utf-8')
     return HttpResponseRedirect('/')
     
-
-def weibo_public(req):
+# GET 
+def weibo_statuses_home_timeline(req):
     oauth2 = OAuth2Handler()
     oauth2.set_app_key_secret(APP_KEY, APP_SECRET, REDIRECT_URL)
     oauth2.set_access_token(ACCESS_TOKEN)
     oauth2.set_openid(OPENID)
     api = API(oauth2)
     
-    #return HttpResponse(json.dumps(api.get.statuses__home_timeline(format = 'json', pageflag = 0, pagetime = 0, reqnum = 50, type = 1, contenttype = 0)), mimetype='text/json; charset=utf-8')
-    return HttpResponse(json.dumps(api.get.statuses__user_timeline(format = 'json', pageflag = 0, pagetime = 0, reqnum = 70, lastid=0, name='ithome', type = 1, contenttype = 0)), mimetype='text/json; charset=utf-8')
+    return HttpResponse(json.dumps(api.get.statuses__home_timeline(format = 'json', pageflag = 0, pagetime = 0, reqnum = 50, type = 1, contenttype = 0)), mimetype='text/json; charset=utf-8')
+
+def weibo_other_kownperson(req):
+    oauth2 = OAuth2Handler()
+    oauth2.set_app_key_secret(APP_KEY, APP_SECRET, REDIRECT_URL)
+    oauth2.set_access_token(ACCESS_TOKEN)
+    oauth2.set_openid(OPENID)
+    api = API(oauth2)
     
+    return HttpResponse(json.dumps(api.get.other__kownperson(format='json', reqnum=10, startindex=0)), mimetype='text/json; charset=utf-8')
+
+#POST
 def weibo_post(req):
     text = req.GET.get('text')
     url = req.GET.get('url')
@@ -90,4 +97,8 @@ def weibo_post(req):
         api.post.t__add_pic_url(content = text, pic_url=url)
     else:
         api.post.t__add(content = text)
+    return HttpResponse(text)
+
+def weibo_t_comment(req):
+    text = req.GET.get('text');
     return HttpResponse(text)

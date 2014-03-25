@@ -1,0 +1,36 @@
+{% load staticfiles %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="utf-8">
+        <meta name="format-detection" content="telephone=no" />
+        <title>Weibo</title>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon"/>
+        <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" />
+    </head>
+    <body>
+			<div id="outer">
+				<div id="header">
+					<div id="logo">
+						<h1>
+							<a href="#">Coffeelike</a>
+						</h1>
+					</div>
+				</div>
+			</div>
+        <div class="container">
+            <ul>
+                <li>
+                    <a class="login tencent" href='api/auth/login'></a>
+                </li>
+            </ul>
+            <br class="clear" />
+        </div>
+			<div id="copyright">
+				&copy; My Style | Design by <a href="http://t.qq.com/remore" rel="nofollow">--大志</a>
+			</div>
+        <script type="text/javascript" src="{% static 'js/bs.js' %}" ></script>
+    </body>
+</html>

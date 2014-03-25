@@ -22,7 +22,7 @@
 					</div>
 					<div id="nav">
 						<ul>
-							<li class="first active">
+							<!--<li class="first active">
 								<a href="#">Home</a>
 							</li>
 							<li>
@@ -36,8 +36,8 @@
 							</li>
 							<li>
 								<a href="#">Blog</a>
-							</li>
-                            <li>
+							</li>-->
+                            <li class="first active">
                                 <a class='' href="#">{{nick}}</a>
                             </li>
 							<li class="last">
@@ -50,37 +50,31 @@
 				<div id="main">
 					<div id="sidebar">
 						<h3>
-							Feugiat sem praesent
+							简介
 						</h3>
 						<p>
-							Aliquam sed vulputate curabitur convallis dignissim. Phasellus sed convallis condimentum et amet
-							hendrerit neque sit euismod.
+							本人一直从事与软件的开发
 						</p>
-						<h3>
-							Suscipit commodo lacinia
-						</h3>
 						<ul class="linkedList">
 							<li class="first">
-								<a href="#">Ridiculus dolore felis</a>
+								<a href="#">微博</a>
 							</li>
 							<li>
-								<a href="#">Cras velit vestibulum penatibus</a>
+								<a href="#">博客</a>
 							</li>
 							<li>
-								<a href="#">Eleifend porttitor auctor</a>
-							</li>
-							<li>
-								<a href="#">Semper erat sed consequat</a>
-							</li>
-							<li>
-								<a href="#">Integer egestas sodales</a>
+								<a href="http://t.qq.com/remore">作者</a>
 							</li>
 							<li class="last">
-								<a href="#">Aliquet cras odio tristique</a>
+								<a href="#">升级</a>
 							</li>
 						</ul>
+                        <h3>
+							可能认识的人
+						</h3>
+						<ul id='kown-boxes' class="head-list"></ul>
 					</div>
-					<div id="content">
+                    <div id="content">
                         <div id="box1">
 							<ul id='weibo-boxes'></ul>
 						</div>
@@ -96,6 +90,7 @@
         <!--==============================tmpl=================================-->
 		<div id='tmpl-boxes'></div>
 		{% include 'tmpl/weibo.tmpl' %}
+        {% include 'tmpl/head.tmpl' %}
 		<script type="text/javascript" src="{% static 'js/lib/jquery-1.9.1.js' %}" ></script>
         <script type="text/javascript" src="{% static 'js/lib/jsviews.js' %}" ></script>
 		<script type="text/javascript" src="{% static 'js/global.js' %}" ></script>
